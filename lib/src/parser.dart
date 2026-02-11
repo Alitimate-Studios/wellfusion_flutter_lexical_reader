@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:ui' as ui;
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_lexical_reader/src/model/math_equation_options.dart';
+import 'package:flutter_lexical_renderer/src/model/math_equation_options.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 
 import 'model/image_options.dart';
@@ -41,6 +42,7 @@ class LexicalParser extends StatefulWidget {
     this.mathEquationOptions = const MathEquationOptions(),
     this.h1Style,
     this.h2Style,
+    this.h3Style,
     this.shrinkWrap = false,
     this.scrollController,
     this.scrollPhysics,
@@ -62,6 +64,7 @@ class LexicalParser extends StatefulWidget {
   final TextStyle? paragraphStyle;
   final TextStyle? h1Style;
   final TextStyle? h2Style;
+  final TextStyle? h3Style;
 
   final bool? lazyLoad;
   final EdgeInsets? tablePadding;
@@ -101,16 +104,17 @@ class _LexicalParserState extends State<LexicalParser> {
         _data = widget.sourceMap;
       }
     } catch (e) {}
-    log(_data.toString());
+    // log(_data.toString());
   }
 
   @override
   Widget build(BuildContext context) {
-    log('Lexical: ${jsonEncode(_data)}');
+    // log('Lexical: ${jsonEncode(_data)}');
     return _PropsInheritedWidget(
       paragraphStyle: widget.paragraphStyle,
       h1Style: widget.h1Style,
       h2Style: widget.h2Style,
+      h3Style: widget.h3Style,
       tablePadding: widget.tablePadding,
       paragraphPadding: widget.paragraphPadding,
       numberedPadding: widget.numberedPadding,

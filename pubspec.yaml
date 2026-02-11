@@ -1,4 +1,4 @@
-name: flutter_lexical_reader
+name: flutter_lexical_renderer
 description: is a powerful and flexible library for reading and analyzing lexical structures in text data inside Flutter applications. This package provides intuitive tools for extracting, analyzing and manipulating lexical elements such as words, phrases and sentences.
 version: 1.1.17
 homepage:
@@ -6,14 +6,14 @@ homepage:
 publish_to: none
 
 environment:
-  sdk: '>=3.0.5 <4.0.0'
+  sdk: ">=3.0.5 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_math_fork: ^0.7.2
-  cached_network_image: ^3.3.0
+  flutter_math_fork:
+  cached_network_image:
 
 dev_dependencies:
   flutter_test:

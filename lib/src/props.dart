@@ -4,6 +4,7 @@ class _PropsInheritedWidget extends InheritedWidget {
   final TextStyle? paragraphStyle;
   final TextStyle? h1Style;
   final TextStyle? h2Style;
+  final TextStyle? h3Style;
   final EdgeInsets? tablePadding;
   final EdgeInsets? tableCellPadding;
 
@@ -27,6 +28,7 @@ class _PropsInheritedWidget extends InheritedWidget {
     required this.mathEquationOptions,
     this.h1Style,
     this.h2Style,
+    this.h3Style,
     required this.imageOptions,
     this.paragraphDataStyle,
     required this.useMyTextStyle,

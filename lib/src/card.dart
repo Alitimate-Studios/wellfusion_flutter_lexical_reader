@@ -150,7 +150,8 @@ class _LexicalCardState extends State<LexicalCard> {
       List<dynamic> children, BuildContext context) {
     List<InlineSpan> spans = [];
     for (int i = 0; i < children.length; i++) {
-      spans.addAll(parseJsonChild(children[i]['children'] ?? [], context));
+      spans.addAll(
+          parseJsonChild(children[i]['children'] ?? [], context, LineType.h1));
       if (i < children.length - 1) {
         spans.add(const TextSpan(text: '\n'));
       }

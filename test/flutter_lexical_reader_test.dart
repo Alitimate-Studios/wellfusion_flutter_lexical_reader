@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_lexical_reader/flutter_lexical_reader.dart';
+import 'package:flutter_lexical_renderer/flutter_lexical_renderer.dart';
 
 void main() {
   final mockData = {

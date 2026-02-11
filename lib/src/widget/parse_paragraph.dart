@@ -24,19 +24,23 @@ class _ParseParagraph extends StatelessWidget {
     final List<InlineSpan> childrenWidgets = parseJsonChild(
       child['children'] ?? [],
       context,
+      lineType,
     );
 
     final paragraphDataStyle =
         _PropsInheritedWidget.of(context)?.paragraphDataStyle;
-    return Padding(
-      padding: paragraphPadding,
-      child: RichText(
-        textAlign: _alignmentFromString(child['format'],
-            textAlign: paragraphDataStyle?.textAlign),
-        text: TextSpan(
-          children: childrenWidgets,
-          style: textStyle.copyWith(
-            height: paragraphDataStyle?.heightText,
+    return SizedBox(
+      width: double.maxFinite,
+      child: Padding(
+        padding: paragraphPadding,
+        child: RichText(
+          textAlign:
+              _alignmentFromString(child['format'], textAlign: TextAlign.start),
+          text: TextSpan(
+            children: childrenWidgets,
+            style: textStyle.copyWith(
+              height: paragraphDataStyle?.heightText,
+            ),
           ),
         ),
       ),
@@ -62,23 +66,30 @@ class _ParseParagraph extends StatelessWidget {
   }
 
   TextStyle _textStyle(BuildContext context, LineType? lineType) {
-    final paragraphStyle = _PropsInheritedWidget.of(context)!.paragraphStyle ??
-        Theme.of(context).textTheme.titleMedium ??
-        const TextStyle(fontSize: 12);
-    final h1Style = _PropsInheritedWidget.of(context)!.h1Style ??
-        Theme.of(context).textTheme.headlineLarge ??
-        const TextStyle(fontSize: 18);
-    final h2Style = _PropsInheritedWidget.of(context)!.h2Style ??
-        Theme.of(context).textTheme.headlineMedium ??
-        const TextStyle(fontSize: 14);
+    // final h1Style = _PropsInheritedWidget.of(context)!.h1Style ??
+    //     Theme.of(context).textTheme.headlineLarge ??
+    //     const TextStyle(fontSize: 18, color: Colors.black);
+    // final h2Style = _PropsInheritedWidget.of(context)!.h2Style ??
+    //     Theme.of(context).textTheme.headlineMedium ??
+    //     const TextStyle(fontSize: 14);
+
+    // final h3Style = _PropsInheritedWidget.of(context)!.h3Style ??
+    //     Theme.of(context).textTheme.headlineSmall ??
+    //     const TextStyle(fontSize: 14);
+
+    final paragraphStyle =
+        //  _PropsInheritedWidget.of(context)!.paragraphStyle ??
+        Theme.of(context).textTheme.bodyMedium ?? const TextStyle(fontSize: 12);
 
     switch (lineType) {
-      case LineType.h1:
-        return h1Style;
+      // case LineType.h1:
+      //   return h1Style;
+      // case LineType.h2:
+      //   return h2Style;
+      // case LineType.h3:
+      //   return h3Style;
       case LineType.paragraph:
         return paragraphStyle;
-      case LineType.h2:
-        return h2Style;
       default:
         return paragraphStyle;
     }
@@ -88,5 +99,6 @@ class _ParseParagraph extends StatelessWidget {
 enum LineType {
   h1,
   h2,
+  h3,
   paragraph,
 }
